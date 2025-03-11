@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/reusables" as *;
+
+head {
+  width: 85%;
+  margin: 1rem auto;
+  max-height: 10vh;
+  @include flex(space-between, baseline, row);
+  flex-wrap: wrap;
+
+  .logo {
+    a {
+      font-family: "Great Vibes";
+      font-size: $header1;
+    }
+  }
+  .home {
+    ul {
+      @include flex(flex-end, baseline, row);
+      gap: 6rem;
+    }
+  }
+
+  a {
+    color: black;
+    margin-right: 0 auto;
+  }
+}

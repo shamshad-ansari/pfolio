@@ -1,0 +1,139 @@
+@use "./abstracts/variables" as *;
+@use "./abstracts/reusables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bitter", sans-serif;
+}
+html {
+  font-size: 62.5%;
+  // background-color: #1a0024;
+  background-color: #ffffff;
+  // color: #ffffff;
+  color: black;
+}
+
+h1 {
+  font-size: $header1;
+}
+li,
+p,
+button,
+label,
+input,
+a {
+  font-size: $text;
+}
+h2 {
+  font-size: $header2;
+}
+h3 {
+  font-size: $header3;
+}
+h4,
+h5 {
+  font-size: $header4;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+//Page Transitions
+
+.page {
+  transition: transform 1s ease-in-out;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit {
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.page-enter-done,
+.page-exit-done {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+// // Media Queries
+// @media screen and (max-width: 1450px) {
+//   html {
+//     font-size: 53%;
+//   }
+//   .splash {
+//     display: none;
+//   }
+//   svg {
+//     max-width: 80%;
+//   }
+//   nav {
+//     width: 100%;
+//   }
+// }
+// @media screen and (max-width: 886px) {
+//   html {
+//     font-size: 45%;
+//   }
+//   svg {
+//     height: 60%;
+//   }
+//   .main-head {
+//     width: 100%;
+//   }
+//   nav {
+//     .logo {
+//       @include flex(center, center, column);
+//       flex: 1 1 20rem;
+//       margin-top: 3rem;
+//     }
+//     ul {
+//       flex: 1 1 60rem;
+//       margin: 3rem 0rem;
+//     }
+//   }
+//   .intro-text {
+//     margin-top: 4rem;
+//     justify-content: center;
+//   }
+//   .intro-social {
+//     @include flex(center, center, row);
+//     a {
+//       margin: 3rem;
+//     }
+//   }
+//   .intro-images {
+//     text-align: center;
+//   }
+//   .travelly,
+//   .elena {
+//     img {
+//       height: 90%;
+//       width: 90%;
+//     }
+//   }
+//   form {
+//     padding: 0rem;
+//     width: 90%;
+//     max-height: 60vh;
+//   }
+// }

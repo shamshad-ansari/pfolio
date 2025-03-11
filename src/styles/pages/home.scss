@@ -1,0 +1,42 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/reusables" as *;
+
+.hero-container {
+  max-height: 90vh;
+  max-width: 80%;
+  margin: 10rem auto 3.5rem auto;
+}
+
+.hero {
+  margin: 10rem auto 0rem auto;
+  @include flex(space-around, center, row);
+  font-weight: 200;
+
+  section {
+    min-height: 72vh;
+    @include flex(center, flex-start, column);
+    .intro-text {
+      font-size: 5.5rem;
+      .intro-name {
+        margin-top: 0.5rem;
+        font-weight: 800;
+      }
+    }
+
+    .intro-description-title {
+      font-size: 3.5rem;
+      margin-top: 2rem;
+    }
+  }
+
+  .image {
+    height: auto;
+    padding-right: 2rem;
+    @include flex(center, center, column);
+
+    img {
+      width: 25vw;
+      height: auto;
+    }
+  }
+}

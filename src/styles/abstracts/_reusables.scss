@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Great Vibes";
+  src: url("/assets/fonts/GreatVibes.woff2") format("woff2"),
+    url("/assets/fonts/GreatVibes.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bitter";
+  src: url("/assets/fonts/Bitter.woff2") format("woff2"),
+    url("/assets/fonts/Bitter.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bitter200";
+  src: url("/assets/fonts/Bitter200.woff2") format("woff2"),
+    url("/assets/fonts/Bitter200.woff") format("woff");
+}
+
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
