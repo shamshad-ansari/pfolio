@@ -1,0 +1,50 @@
+[
+  {
+    "imageSrc": "/assets/images/Clips.png",
+    "altText": "Clips",
+    "title": "Clips",
+    "description": "A dynamic Angular web app for seamless video uploading, organization, and playback.",
+    "tags": ["Angular", "TypeScript", "Firebase", "RxJS"],
+    "sourceLink": "https://github.com/shamshad-ansari/clips"
+  },
+  {
+    "imageSrc": "/assets/images/Vidly.png",
+    "altText": "Vidly",
+    "title": "Vidly",
+    "description": "A React-based movie rental application showcasing CRUD operations, state management, and routing.",
+    "tags": ["React", "Bootstrap", "Node.js", "MongoDB"],
+    "sourceLink": "https://github.com/shamshad-ansari/vidly"
+  },
+  {
+    "imageSrc": "/assets/images/Beatmaker.png",
+    "altText": "Beatmaker",
+    "title": "Beatmaker",
+    "description": "An interactive JavaScript-based beat-maker featuring customizable sounds like kick, snare, and hi-hat.",
+    "tags": ["JavaScript", "HTML5 Audio", "CSS Animations"],
+    "sourceLink": "https://github.com/shamshad-ansari/beatmaker"
+  },
+  {
+    "imageSrc": "/assets/images/Photon.png",
+    "altText": "Photon",
+    "title": "Photon",
+    "description": "Photon is a JavaScript image viewer using Pixels API. It features infinite scrolling and a modern UI.",
+    "tags": ["JavaScript", "API Integration", "Masonry Layout"],
+    "sourceLink": "https://github.com/shamshad-ansari/photon"
+  },
+  {
+    "imageSrc": "/assets/images/Snake.png",
+    "altText": "Snake",
+    "title": "Snake Game",
+    "description": "A classic Snake Game built with Java Swing and AWT, featuring all the traditional gameplay mechanics.",
+    "tags": ["Java", "Swing", "AWT", "Game Loop"],
+    "sourceLink": "https://github.com/shamshad-ansari/snake"
+  },
+  {
+    "imageSrc": "/assets/images/ToDoList.png",
+    "altText": "ToDoList",
+    "title": "To Do List",
+    "description": "A JavaScript-based to-do list application with features to add, delete, filter, and mark tasks as done.",
+    "tags": ["JavaScript", "DOM Manipulation", "Local Storage"],
+    "sourceLink": "https://github.com/shamshad-ansari/todo"
+  }
+]

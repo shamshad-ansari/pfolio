@@ -2,41 +2,191 @@
 @use "../abstracts/reusables" as *;
 
 .hero-container {
-  max-height: 90vh;
-  max-width: 80%;
-  margin: 10rem auto 3.5rem auto;
+  min-height: 90vh;
+  max-width: 85%;
+  margin: 0 auto;
+  @include flex(center, center, column);
 }
 
 .hero {
-  margin: 10rem auto 0rem auto;
-  @include flex(space-around, center, row);
-  font-weight: 200;
+  width: 100%;
+  @include flex(space-between, center, row);
+  flex-wrap: wrap-reverse;
+  gap: 4rem;
 
-  section {
-    min-height: 72vh;
-    @include flex(center, flex-start, column);
-    .intro-text {
-      font-size: 5.5rem;
+  // --- Left Side: Text ---
+  .text-content {
+    flex: 2;
+    margin: 0rem;
+
+    h1 {
+      font-family: "Bitter", sans-serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: $black;
+
       .intro-name {
-        margin-top: 0.5rem;
-        font-weight: 800;
+        font-weight: 700;
+        color: $primary-color;
+        font-size: 6rem;
       }
     }
 
     .intro-description-title {
-      font-size: 3.5rem;
+      font-family: "Bitter", sans-serif;
+      font-size: 2.5rem;
+      margin-top: 1.5rem;
+      color: $black;
+      opacity: 0.8;
+    }
+
+    .description {
+      font-size: 1.8rem;
       margin-top: 2rem;
+      line-height: 1.6;
+      color: $black;
+    }
+
+    // --- Button Styles ---
+    .hero-buttons {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2rem;
+
+      // Common Button Styles
+      button,
+      a {
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 1.2rem 3rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      // Primary Button (Solid Purple)
+      .btn-primary {
+        background-color: $primary-color;
+        color: $white;
+        border: 2px solid $primary-color;
+        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+          background-color: darken($primary-color, 5%);
+        }
+      }
+
+      // Secondary Button (Outline / Transparent)
+      .btn-secondary {
+        background-color: transparent;
+        color: $black;
+        border: 2px solid $black;
+
+        &:hover {
+          background-color: $black;
+          color: $white;
+          transform: translateY(-3px);
+        }
+      }
     }
   }
 
-  .image {
-    height: auto;
-    padding-right: 2rem;
-    @include flex(center, center, column);
+  // --- Right Side: Circular Image ---
+  .image-wrapper {
+    flex: 1;
+    @include flex(center, flex-end, row);
 
-    img {
-      width: 25vw;
-      height: auto;
+    .profile-image {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 8px solid $primary-color;
+      box-shadow: 20px 20px 0px rgba($primary-color, 0.2);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
     }
+  }
+
+  // Mobile Styles
+  @media screen and (max-width: 900px) {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 2rem;
+    gap: 2rem;
+
+    .image-wrapper {
+      justify-content: center;
+      margin-bottom: 2.5rem;
+
+      .profile-image {
+        width: 250px;
+        height: 250px;
+        box-shadow: 10px 10px 0px rgba($primary-color, 0.2);
+      }
+    }
+
+    .text-content {
+
+      h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+      }
+
+      .intro-name {
+        font-size: 4rem !important;
+      }
+
+      .intro-description-title {
+        font-size: 2rem;
+        margin-top: 1.6rem;
+      }
+
+      .description {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+        margin-top: 2.5rem;
+
+        button,
+        a {
+          width: 50%;
+          max-width: 300px;
+          text-align: center;
+          margin-top: 1rem;
+          padding: 1.2rem 0;
+        }
+      }
+    }
+  }
+}
+
+// Hero Container Mobile Adjustments
+@media screen and (max-width: 900px) {
+  .hero-container {
+    min-height: 90vh;
+    padding-bottom: 4rem;
   }
 }

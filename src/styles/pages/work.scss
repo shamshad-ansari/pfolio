@@ -3,63 +3,153 @@
 
 .work-page {
   max-width: 85vw;
-  margin: 8rem auto 5rem auto;
+  margin: 6rem auto 5rem auto; // Reduced top margin slightly
   padding: 1rem;
-  .work-container {
-    @include flex(space-around, center, row);
-    margin-top: 5rem;
-    flex-wrap: wrap;
-    gap: 2rem;
+  
+  // Section Title
+  h2 {
+    font-family: "Bitter", sans-serif;
+    font-size: 4rem;
+    color: $black;
+    margin-bottom: 4rem;
+
+   .highlight {
+      position: relative; // Needed to position the line relative to this text
+      display: inline-block;
+      font-weight: 700; // Make the highlighted word bolder
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 2px; // Adjusts how far down the line sits (tweak as needed)
+        width: 100%; // Spans the full width of the word
+        height: 4px; // Thickness of the underline
+        
+        // Gradient from your Secondary Green to Primary Purple
+        background: linear-gradient(90deg, $primary-color 100%);
+        border-radius: 2px; // Softens the ends of the line
+        opacity: 0.8; 
+      }
+    }
+    
+  }
+  
+  // Subtext
+  p {
+    font-size: 2rem;
+    color: black;
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 4rem;
   }
 
-  p {
-    font-size: $big-text;
-    margin: 1rem;
-    line-height: 1.7;
-  }
-  h2 {
-    font-weight: 200;
+  .work-container {
+    display: grid;
+    // Auto-fit grid: automatically creates columns based on minimum width (320px)
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 3rem; // Consistent spacing between cards
+    margin-top: 2rem;
   }
 }
 
 .work-item {
-  @include flex(space-around, flex-start, column);
-  flex: 0 1 calc(50% - 2rem);
-  box-sizing: border-box;
-  margin: 0;
+  background-color: #ffffff; // White card
+  border: 1px solid rgba(0,0,0,0.05); // Very subtle border
+  border-radius: 12px;
+  overflow: hidden; // Ensures image stays inside border-radius
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; // Stack elements vertically
 
+  &:hover {
+    transform: translateY(-8px); // Lift effect
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15); // Purple-tinted shadow on hover
+    border-color: rgba(108, 99, 255, 0.3); // Purple border on hover
+  }
+
+  // 1. Top Image
   .image-container {
-    margin-top: 5rem;
-    flex: 1;
-    border: none;
-
-    border-radius: 2rem;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 200px; // Fixed height for consistency
     overflow: hidden;
-    &:hover {
-      border: 1px solid #238177;
-      //   #238177
-      //   #0d7482
-    }
-    &:hover img {
-      transform: scale(1.2);
-    }
+    background-color: #f9f9f9;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
+      object-fit: cover; // Ensures image covers the area without stretching
+      transition: transform 0.5s ease;
+    }
+    
+    // Zoom image slightly on hover
+    &:hover img {
+      transform: scale(1.05);
     }
   }
 
-  .description {
-    margin-top: 3rem;
-    flex: 1;
+  // 2. Content Container
+  .content {
+    padding: 2.5rem;
+    flex: 1; // Pushes footer to bottom if description is short
+    display: flex;
+    flex-direction: column;
 
-    .intro {
-      font-size: $small-text;
+    h3 {
+      font-family: "Bitter", sans-serif;
+      font-size: 2.2rem;
+      color: $primary-color; // Purple Title
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 1.5rem;
+      color: #555; // Softer grey for text
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      flex-grow: 1; // Ensures spacing consistency
+    }
+
+    // 3. Tags (Pills)
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+
+      .tag {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $primary-color;
+        background-color: rgba(108, 99, 255, 0.1); // Very light purple bg
+        padding: 0.4rem 1.2rem;
+        border-radius: 20px;
+      }
+    }
+
+    // 4. Footer (Source Code Link)
+    .footer {
+      border-top: 1px solid #eee;
+      padding-top: 1.5rem;
+      
+      .source-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: $black;
+        font-size: 1.4rem;
+        font-weight: 600;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: $primary-color; // Purple on hover
+        }
+
+        svg {
+            fill: currentColor; // Icon changes color with text
+        }
+      }
     }
   }
 }

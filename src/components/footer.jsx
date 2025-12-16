@@ -7,7 +7,7 @@ const Footer = () => {
     <footer>
       <div className="contact">
         <p>Contact</p>
-        <h2>Wanna Work Togeher</h2>
+        <h2>Wanna Work Together</h2>
         <a href="mailto:as.shamshadansari@gmail.com?subject=Let's%20Connect&body=Hi%20there!%20I%20would%20like%20to%20discuss...">
           <button>Click Here</button>
         </a>

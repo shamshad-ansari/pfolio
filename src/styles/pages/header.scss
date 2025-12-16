@@ -1,28 +1,84 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/reusables" as *;
 
-head {
-  width: 85%;
-  margin: 1rem auto;
-  max-height: 10vh;
-  @include flex(space-between, baseline, row);
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 1.5rem 10%; // Slightly tighter padding
+  
+  // Default State: Blends in perfectly with body
+  background-color: transparent; 
+  transition: all 0.4s ease; // Smooth transition for the effect
+
+  @include flex(space-between, center, row);
   flex-wrap: wrap;
+
+  // --- THE SCROLLED STATE ---
+  &.scrolled {
+    // Semi-transparent version of your off-white background
+    background-color: rgba($white, 0.85); 
+    
+    // The Blur Effect (Glassmorphism)
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); // Safari support
+
+    // The Shadow
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    
+    // Optional: Shrink padding slightly on scroll for a compact look
+    padding: 1rem 10%; 
+  }
 
   .logo {
     a {
       font-family: "Great Vibes";
       font-size: $header1;
-    }
-  }
-  .home {
-    ul {
-      @include flex(flex-end, baseline, row);
-      gap: 6rem;
+      cursor: pointer;
+      color: $black;
     }
   }
 
-  a {
-    color: black;
-    margin-right: 0 auto;
+  .home {
+    ul {
+      @include flex(flex-end, center, row);
+      gap: 3rem;
+    }
+
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: $black;
+      font-size: $text;
+      font-weight: 400;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      &.active {
+        color: $primary-color;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Mobile Styles
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+    @include flex(center, center, column);
+    
+    // Ensure mobile menu has a background so it's readable over content
+    background-color: $white; 
+    
+    &.scrolled {
+        padding: 0.8rem;
+    }
+
+    .home ul {
+      gap: 2rem;
+    }
   }
 }

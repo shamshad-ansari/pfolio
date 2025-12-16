@@ -1,32 +1,82 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "../styles/pages/header.scss";
 
-class Header extends Component {
-  render() {
-    return (
-      <head>
-        <nav className="logo">
-          <Link to="/">Shamshad Ansari</Link>
-        </nav>
-        <nav className="home">
-          <ul>
-            <li>
-              <Link to="/">About</Link>
-            </li>
-            <li>
-              <Link to="/works">Works</Link>
-            </li>
-            <li>
-              <a href="mailto:as.shamshadansari@gmail.com?subject=Let's%20Connect&body=Hi%20there!%20I%20would%20like%20to%20discuss...">
-                Contact Me
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </head>
-    );
-  }
-}
+const Header = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false); 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "works", "contact"];
+
+      // 1. Logic for Active Section Spy
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= -200 && rect.top <= 300) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+
+      // 2. NEW: Logic for Header Background/Shadow
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
+    }
+  };
+
+  return (
+    // Dynamically add the "scrolled" class
+    <header className={isScrolled ? "scrolled" : ""}>
+      <nav className="logo">
+        <a onClick={() => scrollToSection("home")}>Shamshad Ansari</a>
+      </nav>
+      <nav className="home">
+        <ul>
+          <li>
+            <a
+              onClick={() => scrollToSection("home")}
+              className={activeSection === "home" ? "active" : ""}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => scrollToSection("works")}
+              className={activeSection === "works" ? "active" : ""}
+            >
+              Works
+            </a>
+          </li>
+          <li>
+            <a
+              onClick={() => scrollToSection("contact")}
+              className={activeSection === "contact" ? "active" : ""}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;
